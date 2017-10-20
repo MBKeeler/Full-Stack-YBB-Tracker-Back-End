@@ -7,7 +7,11 @@ class CreatePlayers < ActiveRecord::Migration[5.1]
       t.string :grade
       t.string :program
       t.string :notes
-
+      t.integer :catch
+      t.integer :throw
+      t.integer :pitch
+      t.integer :bat
+      t.integer :athleticism
       t.timestamps
     end
   end

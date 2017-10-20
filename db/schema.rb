@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020152208) do
+ActiveRecord::Schema.define(version: 20171020192628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "assessments", force: :cascade do |t|
-    t.integer "catch"
-    t.integer "throw"
-    t.integer "pitch"
-    t.integer "bat"
-    t.integer "athleticism"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "examples", force: :cascade do |t|
     t.text "text", null: false
@@ -40,10 +30,15 @@ ActiveRecord::Schema.define(version: 20171020152208) do
     t.string "grade"
     t.string "program"
     t.string "notes"
+    t.integer "catch"
+    t.integer "throw"
+    t.integer "pitch"
+    t.integer "bat"
+    t.integer "athleticism"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "assessment_id"
-    t.index ["assessment_id"], name: "index_players_on_assessment_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,13 +47,10 @@ ActiveRecord::Schema.define(version: 20171020152208) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "assessment_id"
-    t.index ["assessment_id"], name: "index_users_on_assessment_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "examples", "users"
-  add_foreign_key "players", "assessments"
-  add_foreign_key "users", "assessments"
+  add_foreign_key "players", "users"
 end

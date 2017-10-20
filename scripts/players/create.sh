@@ -1,5 +1,6 @@
 curl --include --request POST "http://localhost:4741/players" \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "player": {
       "first_name": "'"${FIRST_NAME}"'",
@@ -8,8 +9,6 @@ curl --include --request POST "http://localhost:4741/players" \
       "grade": "'"${GRADE}"'",
       "program": "'"${PROGRAM}"'",
       "notes": "'"${NOTES}"'"
-    }
-    "assessment": {
       "catch": "'"${CATCH}"'",
       "throw": "'"${THROW}"'",
       "pitch": "'"${PITCH}"'",

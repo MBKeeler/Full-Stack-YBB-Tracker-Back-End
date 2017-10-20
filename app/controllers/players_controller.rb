@@ -1,4 +1,4 @@
-# class PlayersController <ProtectedController
+# class PlayersController < ProtectedController
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :update, :destroy]
 
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
 
   # POST /players
   def create
-    @player = Player.new(player_params)
+    @player = current_user.players.build(player_params)
 
     if @player.save
       render json: @player, status: :created, location: @player
@@ -47,6 +47,6 @@ class PlayersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def player_params
-      params.require(:player).permit(:first_name, :last_name, :age, :grade, :program, :notes)
+      params.require(:player).permit(:first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
     end
 end
