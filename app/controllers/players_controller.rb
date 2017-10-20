@@ -1,5 +1,5 @@
 # class PlayersController <ProtectedController
-class PlayersController < ApplicationController
+class PlayersController < ProtectedController
   before_action :set_player, only: [:show, :update, :destroy]
 
   # GET /players

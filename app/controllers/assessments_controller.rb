@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # class PlayersController <ProtectedController
 
-class AssessmentsController < ApplicationController
+class AssessmentsController < ProtectedController
   before_action :set_assessment, only: [:show, :update, :destroy]
 
   # GET /assessments
