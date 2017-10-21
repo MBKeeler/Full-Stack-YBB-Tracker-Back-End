@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1
   def show
-    render json: @player
+    render json: Player.find(params[:first_name, :last_name])
   end
 
   # POST /players
@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
 
   # PATCH/PUT /players/1
   def update
-    if @player.update(player_params)
+    if @player.update(player_update_prams)
       render json: @player
     else
       render json: @player.errors, status: :unprocessable_entity
@@ -48,5 +48,9 @@ class PlayersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def player_params
       params.require(:player).permit(:first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
+    end
+
+    def player_update_prams
+      params(:player).permit(:id, :first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
     end
 end
