@@ -16,7 +16,8 @@ class PlayersController < ApplicationController
 
   # POST /players
   def create
-    @player = current_user.players.build(player_params)
+    # @player = current_user.players.build(player_params)
+    @player = players.build(player_params)
 
     if @player.save
       render json: @player, status: :created, location: @player
