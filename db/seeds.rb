@@ -9,5 +9,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-players = Player.create(first_name:'Evan', last_name:'Allen', program:'A - Typically Grade 1', age:7, grade:2, notes:'see dad about batting practice', catch:3, throw:3, pitch:3, bat:2, athleticism:2 )
-players = Player.create(first_name:'Wyatt', last_name:'Allen', program:'A - Typically Grade 1', age:9, grade:3, notes:'needs help throwing', catch:3, throw:3, pitch:3, bat:2, athleticism:2 )
+players = Player.create(first_name:'Evan', last_name:'Allen', program:'A - Typically Grade 1', age:7, grade:2, notes:'see dad about batting practice', catch:3, throw:3, pitch:3, bat:2, athleticism:2)

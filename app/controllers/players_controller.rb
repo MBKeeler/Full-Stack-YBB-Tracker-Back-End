@@ -1,5 +1,5 @@
-# class PlayersController < ProtectedController
-class PlayersController < ApplicationController
+class PlayersController < ProtectedController
+# class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :update, :destroy]
 
   # GET /players
@@ -16,8 +16,7 @@ class PlayersController < ApplicationController
 
   # POST /players
   def create
-    # @player = current_user.players.build(player_params)
-    @player = players.build(player_params)
+    @player = current_user.players.build(player_params)
 
     if @player.save
       render json: @player, status: :created, location: @player
@@ -28,7 +27,7 @@ class PlayersController < ApplicationController
 
   # PATCH/PUT /players/1
   def update
-    if @player.update(player_update_prams)
+    if @player.update(player_prams)
       render json: @player
     else
       render json: @player.errors, status: :unprocessable_entity
@@ -51,7 +50,7 @@ class PlayersController < ApplicationController
       params.require(:player).permit(:first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
     end
 
-    def player_update_prams
-      params(:player).permit(:id, :first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
-    end
+    # def player_update_prams
+    #   params(:player).permit(:id, :first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
+
 end
