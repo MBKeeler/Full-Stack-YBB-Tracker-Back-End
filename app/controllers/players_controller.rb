@@ -27,7 +27,7 @@ class PlayersController < ProtectedController
 
   # PATCH/PUT /players/1
   def update
-    if @player.update(player_prams)
+    if @player.update(player_params)
       render json: @player
     else
       render json: @player.errors, status: :unprocessable_entity
