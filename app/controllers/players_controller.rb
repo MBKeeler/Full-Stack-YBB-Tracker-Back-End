@@ -27,7 +27,10 @@ class PlayersController < ProtectedController
 
   # PATCH/PUT /players/1
   def update
-    if @player.update(player_params)
+    # added current_user line below
+    @player = current_user.players.update(player_params)
+
+    if @player.update
       render json: @player
     else
       render json: @player.errors, status: :unprocessable_entity
@@ -36,7 +39,9 @@ class PlayersController < ProtectedController
 
   # DELETE /players/1
   def destroy
-    @player.destroy
+    # added current_user line below
+    @player = current_user.players.destroy
+    # @player.destroy
   end
 
   private
@@ -49,8 +54,4 @@ class PlayersController < ProtectedController
     def player_params
       params.require(:player).permit(:first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
     end
-
-    # def player_update_prams
-    #   params(:player).permit(:id, :first_name, :last_name, :age, :grade, :program, :notes, :catch, :throw, :pitch, :bat, :athleticism)
-
 end
