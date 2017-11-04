@@ -28,9 +28,7 @@ class PlayersController < ProtectedController
   # PATCH/PUT /players/1
   def update
     # added current_user line below
-    @player = current_user.players.update(player_params)
-
-    if @player.update
+    if @player.update(player_params)
       render json: @player
     else
       render json: @player.errors, status: :unprocessable_entity
@@ -40,14 +38,19 @@ class PlayersController < ProtectedController
   # DELETE /players/1
   def destroy
     # added current_user line below
-    @player = current_user.players.destroy
-    # @player.destroy
+    if @player.destroy
+      render json: @player
+    else
+      render json: @player.errors, status: :unprocessable_entity
+    end
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
-      @player = Player.find(params[:id])
+      # @player = Player.find(params[:id])
+      @player = current_user.players.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
