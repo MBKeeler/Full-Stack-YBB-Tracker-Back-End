@@ -5,14 +5,15 @@ class Player < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :program, presence: true
-  validates :age, presence: true
-  validates :grade, presence: true
-  validates :catch, presence: true
-  validates :throw, presence: true
-  validates :pitch, presence: true
-  validates :bat, presence: true
-  validates :athleticism, presence: true
+  validates :age, presence: true, length: { maximum: 2 }
+  validates :grade, presence: true, length: { maximum: 1 }
+  validates :program, length: { maximum: 250 }
+  validates :notes, length: { maximum: 250 }
+  validates :catch, presence: true, length: { maximum: 1 }
+  validates :throw, presence: true, length: { maximum: 1 }
+  validates :pitch, presence: true, length: { maximum: 1 }
+  validates :bat, presence: true, length: { maximum: 1 }
+  validates :athleticism, presence: true, length: { maximum: 1 }
   #  we do not need to validates a note. This is optional
   # we want to validate assessments when a player is made
 end
